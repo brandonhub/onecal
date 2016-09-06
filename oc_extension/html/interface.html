@@ -1,0 +1,144 @@
+<div id = "style_wrapper">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link rel="styesheet" href="/your/css/folder/popup.css">
+
+<div id = "extension_overlay"></div>
+
+<div id = "extension_manage" class = "extension_modal">
+  <div class = "top-bar">
+    <i id = "extension_manage_close_button" class="fa align-right fa-times fa-lg extension_icon" aria-hidden="true"></i>
+    <h3 class = "extension_text_center">My Calendars</h3>
+    <div class = "extension_flash"></div>
+  </div>
+
+  <div id = "extension_manage_wrapper" ></div>
+</div>
+
+<div id = "move_data_source_popup" class = "extension_popup">
+  <span class = "extension_small_title"> Move Data Source </span><br/>
+  <select id = "move_data_source_select"></select>
+  <button sourceId = "null" id = "move_data_source_button">Move</button>
+</div>
+
+<div id = "extension_user" class = "extension_modal">
+
+    <!--<i id = "extension_user_close_button" class="fa align-right fa-times fa-lg extension_icon" aria-hidden="true"></i>-->
+
+    <div class = "extension_flash"></div>
+
+    <div class = "extension_content_container">
+      <table id = "login_forms">
+        <tbody>
+          <tr><td><h3>Login</h3></td> <td><h3>Sign In</h3></td></tr>
+          <tr>
+            <td valign = "top" style = "border-right: 1px solid #A4A4A4;">
+              <input id = "extension_email" type = "text" placeholder="email"></input>
+              <input id = "extension_password" type = "password" placeholder="password"></input><br/>
+              <button id = "extension_login">Login</button>
+            </td>
+            <td valig = "top">
+              <input id = "extension_email_sign_up" type = "text" placeholder="email"></input>
+              <input id = "extension_password_sign_up" type = "password" placeholder="password"></input><br/>
+              <input id = "extension_password_confirm" type = "password" placeholder="confirm password"></input><br/>
+              <button id = "extension_sign_up">Sign Up</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+</div>
+
+
+
+
+<div id = "wizard_interface">
+
+  <div class = "top-bar">
+    <span class = "extension_header">OneCal</span>
+
+    <!--<i id = "extension_settings_button" class="fa align-right fa-cog fa-lg extension_icon" aria-hidden="true"></i>-->
+    <i id = "extension_close_button" class="fa align-right fa-times fa-lg extension_icon" aria-hidden="true"></i>
+    <i id = "extension_manage_button" class="fa align-right fa-calendar fa-lg extension_icon" aria-hidden="true"></i>
+    <i id = "extension_logout_button" class="fa align-right fa-sign-out fa-lg extension_icon" aria-hidden="true"></i>
+
+  </div>
+
+  <div id = "step_holder">
+
+    <div class = "extension_step" id = "select_title">
+      Ok, let's get started. Please select an element containing the title of an assignment.
+    </div>
+
+    <div class = "extension_step" id = "confirm_title">
+      Here's what we've found? Is this correct?
+      <span class = "extension_button" id = "confirm_title_yes">Yes</span>
+      <span class = "extension_button" id = "confirm_title_no">No</span>
+    </div>
+
+    <div class = "extension_step" id = "check_heading">
+      Is there a header row included in the selection (i.e. rows containing "date" or "assignment")?
+      <span class = "extension_button" id = "check_heading_yes">Yes</span>
+      <span class = "extension_button" id = "check_heading_no">No</span>
+    </div>
+
+    <div class = "extension_step" id = "select_date">
+      Now please select an element containing the due date for one of those assignments.
+    </div>
+
+    <div class = "extension_step" id = "confirm_date">
+      Here's what we've found? Is this correct?
+      <span class = "extension_button" id = "confirm_date_yes">Yes</span>
+      <span class = "extension_button" id = "confirm_date_no">No</span>
+    </div>
+
+    <div class = "extension_step" id = "supply_data_format">
+      Please choose the closest format of the dates you see for any given assignment on the syllabus and click "Next."
+      <select class = "input_field" id = 'data_format_selector'>
+        <option value="%B %d">August 01</option>
+        <option value="%b %d">Aug 01 </option>
+        <option value="%m/%d">07/01</option>
+      </select>
+      <span class = "extension_button" id = "supply_data_format_next">Next</span>
+    </div>
+
+    <div class = "extension_step" id = "supply_year">
+      Supply the year for this syllabus and click "Next."
+      <input class = "input_field" type = "text" id = "year_field"></input>
+      <span class = "extension_button" id = "supply_year_next">Next</span>
+    </div>
+
+    <div class = "extension_step" id = "supply_calendar">
+
+      <div id = "user_has_calendar" class = "supply_calendar_option" >
+        Alright we've got your data, simply select the calendar you want us to send it to.
+        <select class = "input_field" type = "text" id = "select_calendar_field">
+          <!-- will dynamically generate calendars -->
+        </select>
+        <span class = "extension_button" id = "supply_calendar_next">Next</span>
+      </div>
+
+      <div id = "user_has_no_calendar" class = "supply_calendar_option" >
+        We've got your data, but it looks like you haven't set up any calendars! Please provide the name for a new one and we'll make one for you :)
+        <input  class = "input_field" type = "text" id = "new_calendar_name_field" placeholder="calendar name"></input>
+        <span class = "extension_button" id = "supply_new_calendar_next">Next</span>
+      </div>
+
+
+    </div>
+
+    <div class = "extension_step" id = "supply_source_name">
+      Now just give this source a name and we'll create a calendar feed for you!
+      <input class = "input_field" type = "text" id = "source_name_field"></input>
+      <span class = "extension_button" id = "supply_source_name_next">Next</span>
+    </div>
+
+    <div class = "extension_step">
+      Perfect! assignment data has been sent to your calendar feed! Check your calendars to get the iCal link.
+    </div>
+
+  </div>
+
+</div>
+
+</div>

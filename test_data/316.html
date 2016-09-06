@@ -1,0 +1,638 @@
+
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>CSE 316A: Fall 2015</title>
+
+
+
+<style type="text/css">
+a { text-decoration:none }
+</style>
+
+<style type="text/css">
+<!--
+.indented1
+   {
+   padding-left: 120pt;
+   padding-right: 120pt;
+   }
+-->
+</style>
+
+<style type="text/css">
+<!--
+.indented2
+   {
+   padding-left: 100pt;
+   padding-right: 100pt;
+   }
+-->
+</style>
+
+
+</head>
+
+
+
+<body bgcolor="#250517"><font color="#FDEEF4">
+<br>
+<center>
+  <h3>
+    CSE 316A: Social Network Analysis<br>
+    Fall 2015
+  </h3>
+  <h4>
+    <a href="http://cse.wustl.edu/Pages/default.aspx" target="_blank"><font color="#C38EC7">Dept. of Computer Science and Engineering,</font></a><br>
+    <a href="http://wustl.edu" target="_blank"><font color="#C38EC7">Washington University in St. Louis</font></a>
+  </h4>
+</center>
+
+
+
+
+<table width="880" border="0" align="center" cellpadding="0" cellspacing="20">
+
+<tr bgcolor="#FDEEF4">
+    <td colspan="4" bgcolor="#FDEEF4" align="left"><a name="syl" id="syl"></a>
+    &nbsp; <font color = "#250517" size="4"><b>Announcements</b></font>
+    </td>
+</tr>
+
+<tr bgcolor="#250517">
+
+    <td colspan="4" bgcolor="#250517"><font color = "#FDEEF4">
+  <ul>
+    <li><a href="cse316a_hw/HW5.pdf" target="_blank"><font color = "#C38EC7"><u>Homework 5</u></font></a> has been posted. It is due by 11:59 pm on Wednesday, December 2.<br><br></li>
+    <li><a href="cse316a_hw/HW4.pdf" target="_blank"><font color = "#C38EC7"><u>Homework 4</u></font></a> has been posted. It is due by 11:59 pm on Monday, November 23.<br><br></li>
+    <li><a href="cse316a_hw/HW3.pdf" target="_blank"><font color = "#C38EC7"><u>Homework 3</u></font></a> has been posted. It is due on Monday, November 9.<br><br></li>
+    <li>You will have your <font color = "#C38EC7">midterm exam in class</font> on <font color = "#C38EC7">Oct 21 (Wed)</font>.<br>Topics: Modules I and II (<font color = "#C38EC7">Graph Theory</font> and <font color = "#C38EC7">Game Theory</font>)<br><br></li>
+    <li><a href="cse316a_hw/HW2.pdf" target="_blank"><font color = "#C38EC7"><u>Homework 2</u></font></a> has been posted. It is due on Monday, October 12 (two weeks from today).<br>Suggestions: Please make a copy of your solutions for your own record. And give the bonus problems a try.<br><br></li>
+          <li>Please watch the two Golden Balls videos posted on the course piazza.<br><br></li>
+    <li><a href="HW1.pdf" target="_blank"><font color = "#C38EC7"><u>Homework 1</u></font></a> has been posted. It is due on Monday, September 21 (two weeks from today).<br><br></li>
+    <li>Please use the link below to sign up for the course piazza.<br><br>
+      <ul>
+        <li><a href="https://piazza.com/wustl/fall2015/cse316a/home" target="_blank"><font color="#C38EC7"><u>CSE 316A Piazza page</u></font></a></li>
+      </ul>
+    </li>
+  </ul>
+    </font></td>
+</tr>
+
+
+
+<tr bgcolor="#FDEEF4">
+    <td colspan="4" bgcolor="#FDEEF4" align="left"><a name="timeplace" id="timeplace"></a>
+    &nbsp; <font color = "#250517" size="4"><b>Class timing and location</b></font>
+    </td>
+</tr>
+
+<tr bgcolor="#250517">
+
+    <td colspan="4" bgcolor="#250517"><font color = "#FDEEF4">
+
+    <b>Hours:</b> Mondays and Wednesdays 2:30-4:00 PM<br>
+          <b>Location:</b> Lopata 101<br>
+
+    </font></td>
+</tr>
+
+<tr bgcolor="#FDEEF4">
+    <td colspan="4" bgcolor="#FDEEF4" align="left"><a name="staff" id="staff"></a>
+    &nbsp; <font color = "#250517" size="4"><b>Staff</b></font>
+    </td>
+</tr>
+
+
+
+<tr bgcolor="#250517">
+    
+    <td colspan="4" bgcolor="#250517"><font color = "#FDEEF4">
+  
+    <b>Instructor:</b><a href="index.html" target="_blank"><font color = "#C38EC7"> Mithun Chakraborty</font></a> (mithunchakraborty AT wustl DOT edu)<br>
+    <b>Office:</b> Bryan 503<br>
+          <b>Office hours:</b> Tuesdays 2:00-4:00 PM and by appointment
+   
+    </font></td>
+</tr>
+
+<tr bgcolor="#250517">
+
+    <td colspan="4" bgcolor="#250517"><font color = "#FDEEF4">
+
+    <b>Teaching assistants (grading):</b><br> 
+    &nbsp; &nbsp; &nbsp; &nbsp; <font color = "#C38EC7">Cassie Wang</font> (cassiewang AT wustl DOT edu),<br>
+    &nbsp; &nbsp; &nbsp; &nbsp; <font color = "#C38EC7">Dana Arditti</font> (darditti AT wustl DOT edu),<br>
+    &nbsp; &nbsp; &nbsp; &nbsp; <font color = "#C38EC7">Michael Liu</font> (m.liu AT wustl DOT edu).
+    </font></td>
+</tr>
+
+<tr bgcolor="#FDEEF4">
+    <td colspan="4" bgcolor="#FDEEF4" align="left"><a name="syl" id="syl"></a>
+    &nbsp; <font color = "#250517" size="4"><b>Syllabus and policies</b></font>
+    </td>
+</tr>
+
+<tr bgcolor="#250517">
+
+    <td colspan="4" bgcolor="#250517"><font color = "#FDEEF4">
+  
+  The following document contains useful information about course organization, topics to be covered, assessment, and academic integrity policies. If you have any further questions, please feel free to contact me by email or in person (at the end of a lecture, during office hours, or by appointment).
+  <ul>
+    <li><a href="SyllabusCSE316A.pdf" target="_blank"><font color = "#C38EC7"><u>Official course syllabus</u></font></a></li>
+  </ul>
+    </font></td>
+</tr>
+
+<tr bgcolor="#FDEEF4">
+    <td colspan="4" bgcolor="#FDEEF4" align="left"><a name="bookreq" id="bookreq"></a>
+    &nbsp; <font color = "#250517" size="4"><b>Texbook and prerequisites</b></font>
+    </td>
+</tr>
+
+<tr bgcolor="#250517">
+
+    <td colspan="4" bgcolor="#250517"><font color = "#FDEEF4">
+  We will primarily use the following textbook which is available for free online. I will provide links to additional reading material, if any, in the class calendar below.<br>
+  <ul>
+    <li><a href="http://www.cs.cornell.edu/home/kleinber/networks-book/" target="_blank"><font color = "#C38EC7"><u><i>Networks, Crowds, and Markets: Reasoning About a Highly Connected
+World</u></i></font></a> (Cambridge University Press, 2010) by David Easley and Jon Kleinberg</li>
+  </ul>
+  CSE 241 (Algorithms and Data Structures) is a nominal requirement for this course, but all that you really need is familiarity with high-school algebra. Some prior exposure to probability and statistics will help, although I will try to review these topics briefly as and when required. 
+    </font></td>
+</tr>
+
+
+<tr bgcolor="#FDEEF4">
+    <td colspan="4" bgcolor="#FDEEF4" align="left"><a name="calendar" id="calendar"></a>
+    &nbsp; <font color = "#250517" size="4"><b>Class calendar</b></font>
+    </td>
+</tr>
+
+<tr bgcolor="#FDEEF4">
+<td colspan="4" bgcolor="#250517" align="left">
+<center>
+<table style="width: 95%; height: 10%;" border="1" bordercolor="#FDEEF4">
+
+  <tbody>
+
+    <tr>
+
+      <td><font color = "#C38EC7">Date</font></td>
+
+      <td><font color = "#C38EC7">Topics</font></td>
+
+      <td><font color = "#C38EC7">Textbook chapters</font></td>
+
+      <td><font color = "#C38EC7">Extras</font></td>
+
+    </tr>
+    
+    <!-- 1 -->
+    
+    <tr>
+
+      <td><font color = "#FDEEF4">Aug 24</font></td>
+
+      <td><a href="Lecture1.pdf" target="_blank"><font color = "#C38EC7"><u>Introduction</u></font></a></td>
+
+      <td><font color = "#FDEEF4"> Chapter 1</font></td>
+
+      <td><font color = "#FDEEF4"> Milgram's six degrees <a href="cse316a_reading/Milgram6deg.pdf" target="_blank"><font color = "#C38EC7"><u>experiment</u></font></a>,</font><br>
+          <font color = "#FDEEF4"> Microsoft Messenger six degrees <a href="cse316a_reading/MessengerSixDegrees.pdf" target="_blank"><font color = "#C38EC7"><u>experiment</u></font></a>,</font><br>
+          <font color = "#FDEEF4"> Facebook emotional contagion <a href="cse316a_reading/PNASfacebook.pdf" target="_blank"><font color = "#C38EC7"><u>experiment</u></font></a>.</font>
+      </td>
+
+    </tr>
+
+<!-- 2 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Aug 26</font></td>
+
+      <td><font color = "#FDEEF4">Introduction to graph theory:<br> Basic concepts and definitions,<br> Paths and distance</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 2</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 3 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Aug 31</font></td>
+
+      <td><font color = "#FDEEF4">Measures of connectedness,<br> bridges and local bridges, span,<br> embeddedness, neighborhood overlap,<br> triadic closure, clustering coefficient</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 3<br> <font color = "#C38EC7"><b>Note: </b></font>For diameter and average distance, see Chapter 2 Exercise 3 (page 46).<br> For Erd&ouml;s number and Bacon number, see Chapter 2 Section 2.3 pages 39-40.</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 4 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Sep 2</font></td>
+
+      <td><font color = "#FDEEF4">Strength of weak ties, <br>Network balance</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 3 Sections 3.2 and 3.3, <br>Chapter 5 Sections 5.1 and 5.2</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 3 Sections 3.4 (passive engagement) and 3.5 (social capital), <br>Granovetter's <a href="cse316a_reading/strength_of_weak_ties.pdf" target="_blank"><font color = "#C38EC7"><u>paper on the strength of weak ties</u></font></a>, <br>Onnela <i>et al</i>'s <a href="cse316a_reading/Lazer_PNAS_2007.pdf" target="_blank"><font color = "#C38EC7"><u>paper on cell phone data</u></font></a>, <br> Chapter 5 Section 5.3</font></td>
+
+    </tr>
+
+<!-- 5 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Sep 7</font></td>
+
+      <td><font color = "#FDEEF4"><a href="HW1.pdf" target="_blank"><font color = "#C38EC7"><u>HW1</u></font></a> is out!</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 6 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Sep 9</font></td>
+
+      <td><font color = "#FDEEF4">Homophily,<br> Social influence and selection,<br> Affiliation networks, measures of similarity</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 4 Sections 4.1 (excluding <b>Measuring Homophily</b> pages 88-90), 4.2, 4.3 (excluding <b>Co-Evolution of Social and Affiliation Networks</b> pages 95-97)<br><font color = "#C38EC7"><b>Note: </b></font>Figure 4.4 describes an interesting (board-of-directors) affiliation network we did not discuss in class.<br> For one of the similarity measures defined in class, see the quantity defined in (4.1) on page 105.</font></td>
+
+      <td><font color = "#FDEEF4">For a similarity measure that takes the total number of affiliations with a focus into account, see  <a href="cse316a_reading/strength_of_weak_ties.pdf" target="_blank"><font color = "#C38EC7"><u>this paper on class schedule data</u></font></a>: equation (1), second page</font></td>
+
+    </tr>
+
+<!-- 7 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Sep 14</font></td>
+
+      <td><font color = "#FDEEF4">Homophily continued:<br> Affiliation vector,<br> Social-affiliation network: Triadic closure, focal closure, membership closure</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 4 Section 4.3 pages 95-97 (<b>Co-Evolution of Social and Affiliation Networks</b>), Section 4.4.<br> <font color = "#C38EC7"><b>Note: </b></font>For similarity measure using affiliation vectors, see Section 2 (up to the end of subsection 2.1) of <a href="cse316a_reading/KleinbergSelecVsInfluence.pdf" target="_blank"><font color = "#C38EC7"><u>this paper</u></font></a>.</font></td>
+
+      <td><font color = "#FDEEF4">Papers <a href="cse316a_reading/DistinguishHomophilyContagion.pdf" target="_blank"><font color = "#C38EC7"><u>1</u></font></a> and <a href="cse316a_reading/homophilyContagionConfound.pdf" target="_blank"><font color = "#C38EC7"><u>2</u></font></a> on homophily vs contagion: just the abstracts. Basically, the first one argues that there is more social selection than previously thought even in processes that are generally attributed to contagion; the second says that these effects are often confounded even in serious research.<br><br> Also, check out piazza post.</font></td>
+
+    </tr>
+
+<!-- 8 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Sep 16</font></td>
+
+      <td><font color = "#FDEEF4">Introduction to Game Theory:<br>Definition of a game, bi-matrix representation of 2-player games, prisoners' dilemma, best response, dominant strategy, dominant strategy equilibrium, tragedy of the commons</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 6 Sections 6.1, 6.2, 6.3 (excluding <b>A Game in Which Only One Player Has a Strictly Dominant Strategy</b> pages 164-166)</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 9 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Sep 21</font></td>
+
+      <td><font color = "#FDEEF4">Dominant strategy continued: Pollution game.<br>A game with two competing firms where only one has a dominant strategy.<br>Nash equilibrium introduced: Hawk-Dove game</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 6 Section 6.3 pages 164-166 (<b>A Game in Which Only One Player Has a Strictly Dominant Strategy</b>), 6.4, 6.6</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 10 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Sep 23</font></td>
+
+      <td><font color = "#FDEEF4">Nash equilibrium continued.<br>Co-ordination games.<br>Attacker-defender games: Matching pennies, Introduction to mixed strategies</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 6 Sections 6.4, 6.5</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 11 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Sep 28</font></td>
+
+      <td><font color = "#FDEEF4">Mixed strategy Nash equilibria</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 6 Section 6.7</font></td>
+
+      <td><font color = "#FDEEF4"><a href="cse316a_hw/HW2.pdf" target="_blank"><font color = "#C38EC7"><u>Homework 2</u></font></a> is out!</font></td>
+
+    </tr>
+
+<!-- 12 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Sep 30</font></td>
+
+      <td><font color = "#FDEEF4">Mixed strategy Nash equilibria completed.<br> HW1 returned.</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 6 Section 6.8</font></td>
+
+      <td><font color = "#FDEEF4">In-class Midterm Exam on Oct 21, Wednesday (Graph Theory and Game Theory)</font></td>
+
+    </tr>
+
+<!-- 13 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Oct 5</font></td>
+
+      <td><font color = "#FDEEF4">Introduction to auction theory: First-price and second-price sealed-bid auction formats</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 9 Sections 9.1, 9.2, 9.5 </font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 14 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Oct 7</font></td>
+
+      <td><font color = "#FDEEF4">Auctions continued</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 9 Section 9.6</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 9 Section 9.3.<br> An interesting <a href="http://daviddfriedman.blogspot.com/2010/07/ebay-and-second-price-auctions.html" target="_blank"><font color = "#C38EC7"><u>blog post</u></font></a> on eBay-style second-price auctions.<br><a href="http://www.nber.org/papers/w8183" target="_blank"><font color = "#C38EC7"><u>Paper</u></font></a> on secret reserve prices (just the abstract)</font></td>
+
+    </tr>
+
+<!-- 15 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Oct 12</font></td>
+
+      <td><font color = "#FDEEF4">Network Models of markets with intermediaries</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 11 Sections 11.1, 11.2</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 16 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Oct 14</font></td>
+
+      <td><font color = "#FDEEF4">Equilibrium analysis of intermediated markets</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 11 Section 11.3</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 17 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Oct 19</font></td>
+
+      <td><font color = "#FDEEF4">Equilibrium analysis of intermediated markets continued: social welfare and trader profits</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 11 Sections 11.5, 11.6, 11.7</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 18 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Oct 21</font></td>
+
+      <td><font color = "#FDEEF4">In-class mid-term exam</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 19 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Oct 26</font></td>
+
+      <td><font color = "#FDEEF4">Introduction to information cascades</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 16 Sections 16.1, 16.2</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 20 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Oct 28</font></td>
+
+      <td><font color = "#FDEEF4">Information cascades continued; Bayes' rule</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 16 Sections 16.3, 16.4</font></td>
+
+      <td><font color = "#FDEEF4"><a href="cse316a_hw/HW3.pdf" target="_blank"><font color = "#C38EC7"><u>Homework 3</u></font></a> is out!</font></td>
+
+    </tr>
+
+<!-- 21 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Nov 2</font></td>
+
+      <td><font color = "#FDEEF4">Information cascades concluded.</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 16 Sections 16.5, 16.6, and 16.7</font></td>
+
+      <td><font color = "#FDEEF4"><a href="cse316a_reading/self_correcting_info_cascade.pdf" target="_blank"><font color = "#C38EC7"><u>Paper</u></font></a> on self-correcting information cascades.</font></td>
+
+    </tr>
+
+<!-- 22 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Nov 4</font></td>
+
+      <td><font color = "#FDEEF4">Power Laws and Rich-get-richer phenomena</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 18 Sections 18.1 through 18.6</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 23 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Nov 9</font></td>
+
+      <td><font color = "#FDEEF4">Cascading Behavior in Networks: Networked Coordination Game, Diffusion process</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 19 Sections 19.1, 19.2</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 24 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Nov 11</font></td>
+
+      <td><font color = "#FDEEF4">Cascading Behavior in Networks continued: cascades and clusters, cluster density</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 19 Section 19.3</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 25 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Nov 16</font></td>
+
+      <td><font color = "#FDEEF4">Cascades concluded: Blocking clusters, heterogeneous thresholds.<br>Collective action started.</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 19 Section 19.4, 19.5</font></td>
+
+      <td><font color = "#FDEEF4"><a href="cse316a_hw/HW4.pdf" target="_blank"><font color = "#C38EC7"><u>Homework 4</u></font></a> is out!</font></td>
+
+    </tr>
+
+<!-- 26 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Nov 18</font></td>
+
+      <td><font color = "#FDEEF4">Collective Action and Pluralistic ignorance.<br>Introduction to epidemics: Branching process</font></td>
+
+      <td><font color = "#FDEEF4">Chapter 19 Section 19.6.<br>Chapter 21 Sections 21.1,21.2</font></td>
+
+      <td><font color = "#FDEEF4"><a href="http://www.technologyreview.com/view/425280/new-media-and-the-people-powered-uprisings/" target="_blank"><font color = "#C38EC7"><u>Here</u></font></a> is an article on the role of social media (particularly Facebook) in the Arab Spring.</font></td>
+
+    </tr>
+
+<!-- 27 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Nov 23</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+      <td><font color = "#FDEEF4"><a href="cse316a_hw/HW5.pdf" target="_blank"><font color = "#C38EC7"><u>Homework 5</u></font></a> is out!</font></td>
+
+    </tr>
+
+<!-- 28 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Nov 25</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 29 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Nov 30</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+<!-- 30 -->
+
+    <tr>
+
+      <td><font color = "#FDEEF4">Dec 2</font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+      <td><font color = "#FDEEF4"></font></td>
+
+    </tr>
+
+
+
+
+  </tbody>
+</table>
+</center>
+</td>
+</tr>
+
+<tr bgcolor="#250517">
+
+    <td colspan="4" bgcolor="#250517"><br></td>
+</tr>
+
+
+</table>
+
+
+
+
+</font>
+</body>
+</html>

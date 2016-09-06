@@ -1,0 +1,215 @@
+#style_wrapper h3{
+  font-family: 'Roboto', sans-serif !important;
+  color: #6EBAFE;
+}
+
+#wizard_interface{
+    border-top: solid #6EBAFE;
+    font-family: 'Roboto', sans-serif !important;
+    align: left !important;
+    font-size: 15px;
+    position: fixed;
+    background-color: #EDEDED;
+    width: 300px;
+    padding: 8px;
+    border-radius: 2px;
+    color: black;
+    top: 1em;
+    right: 1em;
+    box-shadow: 3px 3px 5px #807E7E;
+    z-index: 0; /* this is 1 less than the max for 32-bit unsigned integer */
+}
+
+#extension_manage, #extension_user{
+  /* position stuff */
+  font-family: 'Roboto', sans-serif !important;
+  display: none;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  width:30em;
+  height:18em;
+  margin-top: -9em; /*set to a negative number 1/2 of your height*/
+  margin-left: -15em; /*set to a negative number 1/2 of your width*/
+  background-color: #f3f3f3;
+  z-index: 2147483645; /* this is the max for 32-bit unsigned integer */
+
+}
+.extension_modal{
+  border-top: 3px solid #6EBAFE;
+}
+
+#extension_overlay{
+      height:100%;
+      width:100%;
+      position:fixed;
+      left:0;
+      top:0;
+      z-index:2147483640 !important;
+      background-color:black;
+      filter: alpha(opacity=75); /* internet explorer */
+      -khtml-opacity: 0.75;      /* khtml, old safari */
+        -moz-opacity: 0.75;      /* mozilla, netscape */
+             opacity: 0.75;      /* fx, safari, opera */
+      display: none;
+
+}
+
+.extension_popup{
+  border-top: 3px solid #6EBAFE;
+  font-family: 'Roboto', sans-serif !important;
+  display: none;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  width:10em;
+  height:6em;
+  margin-top: -3em; /*set to a negative number 1/2 of your height*/
+  margin-left: -5em; /*set to a negative number 1/2 of your width*/
+  background-color: #E3E3E3;
+  z-index: 2147483647; /* this is the max for 32-bit unsigned integer */
+  text-align: center;
+}
+.extension_small_title{
+  margin-top: 6px;
+  display: inline-block;
+  color: #6EBAFE;
+}
+.extension_header{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.top-bar{
+  text-align: center;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.extension_icon{
+  margin-left: 5px;
+}
+
+.align-right{
+  float: right;
+}
+
+.extension_button{
+  margin: 8px 6px 4px 4px;
+  color: #6EBAFE;
+  float: right;
+  cursor: pointer;
+}
+
+.input_field{
+  margin-top: 9px;
+  display: block;
+  padding: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+*[unselectable="on"] {  /* for unselectable next button */
+   -moz-user-select: -moz-none;
+ }
+
+ .extension_outline{
+   outline: #70DCFF solid 2px;
+ }
+
+ .login_toggles{
+     width: 50%;
+     margin-top: 30px;
+     margin-left: 25%;
+     margin-right: 25%;
+     text-align: center;
+     font-size: 16px;
+ }
+
+.login_toggle{
+    width: 48%;
+    height: 35px;
+    margin-right: 0;
+    border-style: solid;
+    border-width: 2px;
+    border-color: red;
+}
+
+ .login_toggle_left{
+     background-color: #bbbbff;
+     float: left;
+ }
+
+ .login_toggle_right{
+     background-color: #99ddbb;
+     float: right;
+ }
+
+#login_forms{
+  margin-top: 30px;
+  text-align: center;
+  width: 65%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#login_forms td{
+  valign: top !important;
+}
+
+#login_forms input{
+  margin: 1px;
+  height: 25px;
+}
+
+ .extension_flash{
+   text-align: center
+ }
+
+.data_source_list{
+  list-style: none;
+  padding-left: 15px;
+  font-weight: normal;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.cal_name{
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.extension_text_center{
+  text-align: center;
+}
+
+#user_has_calendar, #user_has_no_calendar{
+  display: none;
+}
+
+.extension_calendar_container{
+  margin-left: 25px;
+}
+
+.extension_calendar_title{
+  font-style: bold;
+  margin: 2px 0 0 0;
+}
+
+.extension_source_title{
+  display: inline-block;
+  color: #6EBAFE;
+  font-size: 11px;
+  border: .3px solid #6EBAFE;
+  border-radius: 2px;
+  margin-right: 4px;
+  margin-top: 2px;
+  padding: 2px;
+  cursor: pointer;
+}
+
+#create_new_cal_field{
+  margin-left: 25px;
+  margin-top: 15px;
+}
